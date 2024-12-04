@@ -47,7 +47,7 @@
      ```
    - Clone o repositório com o comando abaixo (substitua pela URL do repositório do seu projeto):
      ```bash
-     [git clone https://github.com/usuario/repo.git](https://github.com/LuizRaymond/Prato-Feito-pw-2.git)
+     git clone https://github.com/LuizRaymond/Prato-Feito-pw-2.git
      ```
      Isso criará uma pasta com o nome do repositório.
 
