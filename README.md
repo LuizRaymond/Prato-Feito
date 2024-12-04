@@ -47,22 +47,21 @@
      ```
    - Clone o repositório com o comando abaixo (substitua pela URL do repositório do seu projeto):
      ```bash
-     git clone https://github.com/usuario/repo.git
+     [git clone https://github.com/usuario/repo.git](https://github.com/LuizRaymond/Prato-Feito-pw-2.git)
      ```
      Isso criará uma pasta com o nome do repositório.
 
 # 3. **Configurar o Projeto (se necessário)**
    - Entre na pasta do projeto clonado:
      ```bash
-     cd nome-do-repositorio
+     cd Prato-Feito-pw-2
      ```
-   - Se o projeto utilizar dependências, como no caso de um projeto PHP, você pode precisar configurar o banco de dados no MySQL (acesso pelo phpMyAdmin) e ajustar as variáveis de configuração no arquivo `.env` ou em algum outro arquivo de configuração.
 
 # 4. **Acessar o Projeto no Navegador**
    - Abra o navegador de sua escolha.
    - Acesse o seguinte endereço:
      ```text
-     http://localhost/nome-do-repositorio/pages/
+     http://localhost/Prato-Feito-pw-2/pages/
      ```
      Isso deve exibir a página que você deseja.
 
