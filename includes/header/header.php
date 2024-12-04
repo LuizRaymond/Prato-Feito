@@ -39,7 +39,7 @@ if (!isset($_SESSION)) {
     </style>
 
 </head>
-<header class="flex flex-row w-screen justify-around items-center py-5">
+<header class="flex flex-row w-screen justify-around items-center py-5 fixed left-0 top-0 z-20 bg-white">
     <button onclick="redirecionar('../pages/index.php')" class="font-bold from-neutral-900 text-xl">PRATO FEITO</button>
     <div class="flex gap-4 items-center justify-center">
         <div class="box-links">
