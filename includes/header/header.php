@@ -51,20 +51,22 @@ if (!isset($_SESSION)) {
             <div></div>
         </div>
         <div class="box-links">
-            <a href="../pages/blog.php">Blog de Receitas</a>
+            <a href="../pages/blog.php">Suas de Receitas</a>
+            <div></div>
+        </div>
+
+        <div class="box-links">
+            <a href="../pages/todas_receitas.php">Tudo</a>
             <div></div>
         </div>
         <?php if (!isset($_SESSION['usuario'])): ?>
-            
-                <button class="border border-black py-1 px-4" onclick="redirecionar('../auth/login.php')">Login</button>
+
+            <button class="border border-black py-1 px-4" onclick="redirecionar('../auth/login.php')">Login</button>
         <?php else: ?>
-            <div class="box-links">
-                <a href="../auth/cadastro_receita.php">Cadastre suas receitas</a>
-                <div></div>
-            </div>
+
             <button class="border border-black py-1 px-4" onclick="redirecionar('../auth/logout.php')">Sair</button>
         <?php endif; ?>
-    </>
+        </>
 </header>
 
 <script>
