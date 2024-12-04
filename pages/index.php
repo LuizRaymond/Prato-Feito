@@ -29,6 +29,10 @@ try {
 </head>
 
 <style>
+    html {
+        scroll-behavior: smooth;
+    }
+
     body {
         background-image: url(../assets/images/feijao-tropeiro-brasil-3-1024x683.webp);
         background-repeat: no-repeat;
@@ -47,27 +51,28 @@ try {
     include("../includes/header/header.php");
     ?>
 
-    <div class="flex flex-col min-h-screen  w-screen items-center">
+    <div class="flex flex-col min-h-screen  w-screen items-center" >
 
-        <div class="w-screen h-screen flex justify-center items-center relative">
+        <div class="w-screen  flex justify-center items-center relative mt-12" style="height: 600px;">
 
             <div class="absolute inset-0 bg-black bg-opacity-70"></div>
 
             <div
                 class="flex flex-col gap-4 items-start w-2/3 absolute left-[50%] top-[50%] translate-y-[-50%] translate-x-[-50%] text-white">
-                <h1 class="text-7xl font-bold">Prato Feito</h1>
+                <h1 class="text-5xl font-bold">Prato Feito</h1>
 
-                <h2 class="text-2xl font-semibold">Receitas Compartilhadas por todos.</h2>
+                <h2 class="text-xl font-semibold">Receitas Compartilhadas por todos.</h2>
 
-                <button class="p-4 font-bold text-xl rounded" style="background-color: #32aa27; transition: all .3s"
+                <a href="#primeira-session" class="p-3 font-medium text-lg rounded"
+                    style="background-color: #32aa27; transition: all .3s"
                     onmouseover="this.style.backgroundColor='#278720';"
                     onmouseout="this.style.backgroundColor='#32aa27';">
                     Participe
-                </button>
+                </a>
             </div>
         </div>
 
-        <div class="w-screen min-h-screen flex justify-center items-center bg-white">
+        <div id="primeira-session" class="w-screen min-h-screen flex justify-center items-center bg-white">
             <div class="flex gap-28 items-center">
                 <div class="w-96 flex flex-col gap-4">
                     <h3 class="text-xl font-semibold" style="color:#32aa27;">Compartilhe suas receitas</h3>
@@ -122,46 +127,46 @@ try {
         </div>
 
         <div class="w-screen min-h-screen flex flex-col gap-16 justify-center items-center bg-white py-11">
-            <?php foreach ($receitas as $receita):
-                if ($receita["id"] < 5) { ?>
-                    <div class="flex gap-4 h-52 w-[700px] shadow-2xl">
-                        <div>
-                            <img class=" h-52 object-cover" src="<?php echo $receita['imagem']; ?>">
-                        </div>
-                        <div class="flex flex-col h-full justify-between w-96 px-6 py-6">
-                            <a class="outline-none no-underline text-xl font-semibold"
-                                href="receita.php?id=<?php echo $receita['id']; ?>"><?php echo $receita['titulo']; ?></a>
-                            <h3 style="color:#595959;" class="text-lg"><?php echo $receita['descricao']; ?></h3>
+            <?php $receitasLimitadas = array_slice($receitas, 0, 4);
+            foreach ($receitasLimitadas as $receita): ?>
+                <div class="flex gap-4 h-52 w-[700px] shadow-2xl">
+                    <div>
+                        <img class="h-52 w-72 object-cover" src="<?php echo $receita['imagem']; ?>">
+                    </div>
+                    <div class="flex flex-col h-full justify-between w-96 px-6 py-6">
+                        <a class="outline-none no-underline text-xl font-semibold"
+                            href="receita.php?id=<?php echo $receita['id']; ?>"><?php echo $receita['titulo']; ?></a>
+                        <h3 style="color:#595959;" class="text-lg"><?php echo $receita['descricao']; ?></h3>
 
-
-                            <div class="flex w-full gap-4 font-light text-sm">
-                                <span><?php echo $receita['categoria']; ?></span>
-                                <span>|</span>
-                                <p>
-                                    <?php
-                                    try {
-                                        $sql = "SELECT nome FROM usuarios where id = :usuario_id";
-                                        $stmt = $pdo->prepare($sql);
-                                        $stmt->bindParam(':usuario_id', $receita['usuario_id'], PDO::PARAM_INT);
-                                        $stmt->execute();
-                                        $usuario = $stmt->fetch();
-                                        echo "Por " . $usuario["nome"];
-                                    } catch (PDOException $e) {
-                                        echo "" . $e->getMessage();
-                                    }
-
-                                    ?>
-                                </p>
-                            </div>
+                        <div class="flex w-full gap-4 font-light text-sm">
+                            <span><?php echo $receita['categoria']; ?></span>
+                            <span>|</span>
+                            <p>
+                                <?php
+                                try {
+                                    $sql = "SELECT nome FROM usuarios where id = :usuario_id";
+                                    $stmt = $pdo->prepare($sql);
+                                    $stmt->bindParam(':usuario_id', $receita['usuario_id'], PDO::PARAM_INT);
+                                    $stmt->execute();
+                                    $usuario = $stmt->fetch();
+                                    echo "Por " . $usuario["nome"];
+                                } catch (PDOException $e) {
+                                    echo "" . $e->getMessage();
+                                }
+                                ?>
+                            </p>
                         </div>
                     </div>
-                <?php } ?>
+                </div>
             <?php endforeach; ?>
 
-            <div class="flex gap-4 items-center justify-center"> <h1>Quer ver mais Receitas?</h1> <a href="blog.php" class="p-2 font-bold text-sm rounded text-white"
+            <div class="flex gap-4 items-center justify-center my-4">
+                <h1 class="text-xl">Quer ver mais Receitas?</h1> <a href="blog.php"
+                    class="p-2 font-bold text-sm rounded text-white"
                     style="background-color: #32aa27; transition: all .3s; "
                     onmouseover="this.style.backgroundColor='#278720';"
-                    onmouseout="this.style.backgroundColor='#32aa27';">Clique Aqui!</a></div>
+                    onmouseout="this.style.backgroundColor='#32aa27';">Clique Aqui!</a>
+            </div>
 
         </div>
     </div>
